@@ -28,6 +28,7 @@ function discoverMovies(callback) {
 
 			// TODO 2
 			// update the model, setting its .browseItems property equal to the movies we recieved in the response
+			model.browseItems = response.results;
 
 			// invoke the callback function that was passed in.
 			callback();
@@ -36,27 +37,34 @@ function discoverMovies(callback) {
 
 }
 
-
 /**
  * re-renders the page with new content, based on the current state of the model
  */
 function render() {
-  // TODO 7
-  // clear everything from both lists
+	// TODO 7
+	// clear everything from both lists
 
-  // TODO 6
-  // for each movie on the user's watchlist, insert a list item into the <ul> in the watchlist section
+	// TODO 6
+	// for each movie on the user's watchlist, insert a list item into the <ul> in the watchlist section
 
-  // for each movie on the current browse list,
-  model.browseItems.forEach(function(movie) {
+	// for each movie on the current browse list,
+	model.browseItems.forEach(function(movie) {
+		console.log(movie.original_title);
 		// TODO 3
 		// insert a list item into the <ul> in the browse section
+		var movieList = $("<li></li>").text(movie.original_title);
+		//$("#section-browse ul").append(movieList);
 
 		// TODO 4
 		// the list item should include a button that says "Add to Watchlist"
+		var button = $("<button></button>").text("Add to Watchlist");
+        movieList.append(button);
+		$("#section-browse ul").append( movieList );
 
-		// TODO 5
-		// when the button is clicked, this movie should be added to the model's watchlist and render() should be called again
+	  	// TODO 5
+	  	// when the button is clicked, this movie should be added to the model's watchlist and render() should be called again
+
+
   });
 
 }
