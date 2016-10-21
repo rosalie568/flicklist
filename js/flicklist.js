@@ -50,7 +50,18 @@ function searchMovies(searchTerm, callback) {
     // TODO 9
     // implement this function as described in the comment above
     // you can use the body of discoverMovies as a jumping off point
-
+    $.ajax({
+        url: api.root + "/search/" + searchTerm,
+        data: {
+            api_key: api.token,
+            query: searchTerm
+        },
+        success: function(response) {
+            model.browseItems = response.results;
+            console.log(model.browseItems);
+            callback();
+        }
+    });
 
 }
 
@@ -90,7 +101,7 @@ function render() {
         // the user's watchlist
         // see jQuery .prop() and Array.indexOf()
         var watch = model.watchlistItems.indexOf(movie) == false;
-        button.prop("disabled", watch);
+        $("#name").prop("disabled", watch);
 
 
         // TODO 1
