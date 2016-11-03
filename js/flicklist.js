@@ -100,10 +100,21 @@ function render() {
 
     // TODO 2g
     // re-implement the li as a bootstrap panel with a heading and a body
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Panel title</h3>
+      </div>
+      <div class="panel-body">
+        Panel content
+      </div>
+    </div>
+    //var first = $("<div class='panel panel-default'> </div>");
+    //var second = $("<div class='panel-heading'></div>")
+
     var itemView = $("<li></li>")
       .append(title)
       .append(button)
-      .attr("class", "item-watchlist");
+      .attr("class", "item-watchlist panel");
 
     $("#section-watchlist ul").append(itemView);
   });
